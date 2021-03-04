@@ -27,40 +27,40 @@ class App extends React.Component {
         ) 
         break;
 
-        case "sub":
-          this.setState(
-            {
-              result : calc.subtract([parseInt(this.state.input1), parseInt(this.state.input2)])
-            }
-          ) 
-          break;
+      case "sub":
+        this.setState(
+          {
+            result : calc.subtract([parseInt(this.state.input1), parseInt(this.state.input2)])
+          }
+        ) 
+        break;
 
-          case "mult":
-            this.setState(
-              {
-                result : calc.multiple([parseInt(this.state.input1), parseInt(this.state.input2)])
-              }
-            ) 
-            break;
+      case "mult":
+        this.setState(
+          {
+            result : calc.multiple([parseInt(this.state.input1), parseInt(this.state.input2)])
+          }
+        ) 
+        break;
 
-            case "div":
-              this.setState(
-                {
-                  result : calc.divide([parseInt(this.state.input1), parseInt(this.state.input2)])
-                }
-              ) 
-              break;  
+      case "div":
+        this.setState(
+          {
+            result : calc.divide([parseInt(this.state.input1), parseInt(this.state.input2)])
+          }
+        ) 
+        break;  
       default:
         break;
     }
   }
   
   render(){
-    return el('form', null,
-    el('p', null, "input1 = " + this.state.input1 + " input2 = " + this.state.input2), 
+    return el('form', {class:"calc"},
+    el('h1', null, "Calculator"), 
     el('input', {name:"input1", onChange: this.updateState, type: "Number"}, null),
     el('input', {name:"input2", onChange: this.updateState, type: "Number"}, null),
-    el('p', null, `Result = ${this.state.result}`),
+    el('h2', null, `Result = ${this.state.result}`),
     el('button', {name:"add", type:"button", onClick: this.doMath}, "+"),
     el('button', {name:"sub", type:"button", onClick: this.doMath}, "-"),
     el('button', {name:"mult", type:"button", onClick: this.doMath}, "*"),

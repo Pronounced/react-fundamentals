@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+.calc {
+  text-align: center;
+  font-family: cursive;
+}
+
+.calc button {
+  min-width: 50px;
+}

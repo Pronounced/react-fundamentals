@@ -1,8 +1,9 @@
 import './App.css';
 import React from "react";
-import calc from "./calc.js"
+import calc from "./calc.js";
+import Button from "./component/button";
+import Input from "./component/input";
 
-const el = React.createElement;
 class App extends React.Component {
 
   state = {
@@ -59,19 +60,25 @@ class App extends React.Component {
         break;
     }
   }
+
+  componentDidUpdate(){
+    console.log("Test")
+  }
   
   render(){
-    return el('form', {class:"calc"},
-    el('h1', null, "Calculator"), 
-    el('input', {name:"input1", onChange: this.updateState, type: "Number"}, null),
-    el('label', null, ` ${this.state.operator} `),
-    el('input', {name:"input2", onChange: this.updateState, type: "Number"}, null),
-    el('h2', null, `Result = ${this.state.result}`),
-    el('button', {name:"add", type:"button", onClick: this.doMath}, "+"),
-    el('button', {name:"sub", type:"button", onClick: this.doMath}, "-"),
-    el('button', {name:"mult", type:"button", onClick: this.doMath}, "*"),
-    el('button', {name:"div", type:"button", onClick: this.doMath}, "/"),    
-    )
+    return (
+      <form className="calc">
+        <h1>Calculator</h1>
+        <Input name="input1" type="number" placeholder="input1" onChange={this.updateState}></Input>
+        <label> {this.state.operator} </label>
+        <Input name="input2" type="number" placeholder="input2" onChange={this.updateState}></Input>
+        <h2> Result = {this.state.result}</h2>
+        <Button name="add" type='button' onClick={this.doMath} text="+"></Button>
+        <Button name="sub" type='button' onClick={this.doMath} text="-"></Button>
+        <Button name="mult" type='button' onClick={this.doMath} text="*"></Button>
+        <Button name="div" type='button' onClick={this.doMath} text="/"></Button>
+      </form>
+    );
   }
 }
 
